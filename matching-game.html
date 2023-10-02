@@ -1,0 +1,82 @@
+<!--By : José Santiago Echevarria
+Revised : 9/30/2023 --> 
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Matching Game</title>
+		<style>
+			img {
+				position: absolute;
+			}
+			div {
+				position: absolute;
+				width: 500px;
+				height: 500px;
+			}
+			#rightSide {
+				left: 500px;
+				border-left: 1px solid;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Matching Game</h1>
+		<button id='btn' onclick='generateFaces()'>Start Game</button>
+		<p>Click on the extra smiling face on the left.</p>
+		<div id='sides'>
+			<div id="leftSide"></div>
+			<div id="rightSide"></div>
+		</div>
+		<script>
+			let numberOfFaces = 5;
+			const THE_LEFT_SIDE = document.getElementById('leftSide');
+			const THE_RIGHT_SIDE = document.getElementById('rightSide');
+
+			function generateFaces() {
+				document.getElementById('btn').disabled = true;
+				for (let i = 0; i < numberOfFaces; i++) {
+					const FACE = document.createElement('img');
+					const randomTop = Math.floor(Math.random() * 400) + 1;
+					const randomLeft = Math.floor(Math.random() * 400) + 1;
+
+                    FACE.src = 'images/smile.png';
+					FACE.style.top = randomTop + 'px';
+					FACE.style.left = randomLeft + 'px';
+					THE_LEFT_SIDE.appendChild(FACE);
+				}
+
+				const LEFT_SIDE_IMAGES = THE_LEFT_SIDE.cloneNode(true);
+				LEFT_SIDE_IMAGES.removeChild(LEFT_SIDE_IMAGES.lastChild);
+				THE_RIGHT_SIDE.appendChild(LEFT_SIDE_IMAGES);
+				THE_LEFT_SIDE.lastChild.addEventListener('click', nextLevel);
+				document.getElementById('x').addEventListener('click', gameOver);
+			}
+
+			function nextLevel(event) {
+				event.stopPropagation();
+				while (THE_LEFT_SIDE.firstChild) {
+					THE_LEFT_SIDE.removeChild(THE_LEFT_SIDE.firstChild);
+				}
+				while (THE_RIGHT_SIDE.firstChild) {
+					THE_RIGHT_SIDE.removeChild(THE_RIGHT_SIDE.firstChild);
+				}
+				numberOfFaces += 5;
+				generateFaces();
+			}
+
+			function gameOver() {
+				alert('You Lose!');
+				document.getElementById('sides').removeEventListener('click', gameOver);
+				THE_LEFT_SIDE.lastChild.removeEventListener('click', nextLevel);
+				THE_LEFT_SIDE.innerHTML = '';
+				THE_RIGHT_SIDE.innerHTML = '';
+				numberOfFaces = 5;
+				document.getElementById('btn').disabled = false;
+			}
+		</script>
+	</body>
+</html>
