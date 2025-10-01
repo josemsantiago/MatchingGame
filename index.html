@@ -11,6 +11,8 @@ Revised : 9/30/2023 -->
 		<style>
 			img {
 				position: absolute;
+				width: 100px;
+				height: 100px;
 			}
 			div {
 				position: absolute;
@@ -43,7 +45,7 @@ Revised : 9/30/2023 -->
 					const randomTop = Math.floor(Math.random() * 400) + 1;
 					const randomLeft = Math.floor(Math.random() * 400) + 1;
 
-                    FACE.src = 'images/smile.png';
+                    FACE.src = 'images/smile.svg';
 					FACE.style.top = randomTop + 'px';
 					FACE.style.left = randomLeft + 'px';
 					THE_LEFT_SIDE.appendChild(FACE);
@@ -53,7 +55,7 @@ Revised : 9/30/2023 -->
 				LEFT_SIDE_IMAGES.removeChild(LEFT_SIDE_IMAGES.lastChild);
 				THE_RIGHT_SIDE.appendChild(LEFT_SIDE_IMAGES);
 				THE_LEFT_SIDE.lastChild.addEventListener('click', nextLevel);
-				document.getElementById('x').addEventListener('click', gameOver);
+				document.getElementById('sides').addEventListener('click', gameOver);
 			}
 
 			function nextLevel(event) {
