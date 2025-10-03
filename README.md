@@ -1,6 +1,12 @@
 # MatchingGame
 ### Spot the Difference Browser Game
 
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Status](https://img.shields.io/badge/status-active-success)
+
 An interactive web-based "spot the difference" game that demonstrates advanced DOM manipulation, event handling, and JavaScript programming concepts.
 
 ## Overview
@@ -50,7 +56,7 @@ gameOver()                      // Handles game termination and reset
 
 ## How to Play
 
-1. **Start**: Open `matching-game.html` in a web browser
+1. **Start**: Open `index.html` in a web browser
 2. **Observe**: Study both panels to spot differences
 3. **Click**: Click on the extra face that appears only on the left
 4. **Progress**: Successfully find faces to advance levels
@@ -60,7 +66,9 @@ gameOver()                      // Handles game termination and reset
 
 ```
 MatchingGame/
-├── matching-game.html     # Complete game implementation
+├── index.html            # Complete game implementation
+├── images/
+│   └── smile.svg         # Smiley face image
 └── README.md             # This documentation
 ```
 
@@ -68,15 +76,12 @@ MatchingGame/
 
 - **JavaScript**: Must be enabled for game functionality
 - **Modern Browser**: Chrome, Firefox, Safari, Edge recommended
-- **Image Support**: Browser must support PNG image format
+- **Image Support**: Browser must support SVG image format
 - **DOM Support**: Full DOM manipulation capabilities required
 
-## Known Limitations
+## Assets
 
-⚠️ **Missing Asset**: The game references `images/smile.png` but this file is not included in the repository. You'll need to:
-1. Create an `images/` directory
-2. Add a `smile.png` file (smiley face image)
-3. Ensure the image is appropriately sized for the game
+✅ The game includes `images/smile.svg` - a smiley face image used for the game pieces.
 
 ## Educational Value
 
@@ -126,7 +131,7 @@ function nextLevel() {
 ## Debugging Notes
 
 If faces don't appear:
-1. Check that `images/smile.png` exists
+1. Check that `images/smile.svg` exists
 2. Verify image path is correct
 3. Ensure browser console shows no errors
 4. Check that JavaScript is enabled
@@ -147,4 +152,70 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-*Note: This game requires a `smile.png` image file in an `images/` directory to function properly.*
+## Screenshots
+
+> **Note:** Screenshots will be added soon. To play the game immediately, open `index.html` in any web browser - no installation required!
+
+## Troubleshooting
+
+### Common Issues
+
+**Issue:** Smiley faces don't appear on the page
+
+**Solution:** Verify that `images/smile.svg` exists in the correct directory. Check browser console (F12) for 404 errors. Ensure the file path in the JavaScript matches your directory structure.
+
+---
+
+**Issue:** Game doesn't reset after clicking wrong area
+
+**Solution:** The game restarts automatically when you click outside a valid face. If this doesn't work, refresh the page manually. Check browser console for JavaScript errors.
+
+---
+
+**Issue:** Faces overlap and are hard to click
+
+**Solution:** This occurs more frequently at higher levels with many faces. Try clicking precisely on the center of each face. As difficulty increases, overlapping is expected behavior.
+
+---
+
+**Issue:** Game becomes too difficult at higher levels
+
+**Solution:** The difficulty increases by 5 faces per level. To adjust difficulty, modify the `numberOfFaces` increment in the `nextLevel()` function. For easier gameplay, change it to increment by 3 or 4 instead of 5.
+
+---
+
+**Issue:** JavaScript errors in console
+
+**Solution:** Ensure you're using a modern browser (Chrome 80+, Firefox 75+, Safari 13+). Check that JavaScript is enabled. Clear browser cache and reload the page.
+
+For additional help, check the browser console for specific error messages or verify the file structure matches the expected layout.
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/YourFeature`)
+3. Commit your changes (`git commit -m 'Add YourFeature'`)
+4. Push to the branch (`git push origin feature/YourFeature`)
+5. Open a Pull Request
+
+**Suggested improvements:**
+- Add timer for speed-based challenges
+- Implement scoring system with leaderboards
+- Add sound effects for correct/incorrect clicks
+- Create difficulty settings (easy, medium, hard)
+- Add different image themes (animals, shapes, emojis)
+- Implement mobile touch optimization
+- Add visual effects and animations
+
+## Contact & Support
+
+- **Author**: José Santiago Echevarria
+- **Issues**: Report bugs or suggest features via [GitHub Issues](https://github.com/josemsantiago/MatchingGame/issues)
+- **Project Type**: Educational browser game demonstrating DOM manipulation, event handling, and game state management
+- **Tech Focus**: Vanilla JavaScript, dynamic HTML generation, absolute CSS positioning, and recursive game logic
+
+---
+
+*Note: This game uses `smile.svg` from the `images/` directory for the game pieces.*
